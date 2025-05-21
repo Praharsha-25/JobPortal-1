@@ -80,7 +80,7 @@ const JobListing = () => {
                             JobCategories.map((category, index) => (
                                 <li className='flex gap-3 items-center' key={index}>
                                     <input
-                                        className='scale-125'
+                                        className='scale-125 cursor-pointer'
                                         type="checkbox"
                                         onChange={() => handleCategoryChange(category)}
                                         checked={selectedCategories.includes(category)}
@@ -99,7 +99,7 @@ const JobListing = () => {
                             JobLocations.map((location, index) => (
                                 <li className='flex gap-3 items-center' key={index}>
                                     <input
-                                        className='scale-125'
+                                        className='scale-125 cursor-pointer'
                                         type="checkbox"
                                         onChange={() => handleLocationChange(location)}
                                         checked={selectedLocations.includes(location)}
@@ -129,7 +129,7 @@ const JobListing = () => {
                         </a>
                         {Array.from({ length: Math.ceil(filteredJobs.length / 6) }).map((_, index) => (
                             <a href="#job-list" key={index}>
-                                <button onClick={() => setCurrentPage(index + 1)} className={`w-10 h-10 flex items-center justify-center border border-gray-300 rounded ${currentPage === index + 1 ? 'bg-blue-100 text-blue-500' : 'text-gray-500'}`}>{index + 1}</button>
+                                <button onClick={() => setCurrentPage(index + 1)} className={`w-10 h-10 flex items-center justify-center border border-gray-300 rounded ${currentPage === index + 1 ? 'bg-blue-100 text-blue-500' : 'text-gray-500'} cursor-pointer`}>{index + 1}</button>
                             </a>
                         ))}
                         <a href="#job-list">
