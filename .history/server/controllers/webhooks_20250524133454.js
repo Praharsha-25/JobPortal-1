@@ -1,5 +1,4 @@
-import svix from "svix";
-const { Webhook } = svix;
+import { Webhook } from "svix";
 import User from "../models/User.js";
 
 // API COntroller Function to Manage CLerk User with database
