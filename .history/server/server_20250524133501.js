@@ -11,6 +11,7 @@ const app = express()
 
 console.log('MONGO_URI from .env:', process.env.MONGO_URI);
 
+
 //Database connection
 await connectDB()
 
