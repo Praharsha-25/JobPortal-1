@@ -16,32 +16,32 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Svix = exports.messageInRaw = exports.ValidationError = exports.HttpErrorOut = exports.HTTPValidationError = exports.ApiException = void 0;
 
-const authentication_1 = require("../dist/api/authentication");
-const application_1 = require("../dist/api/application");
-const backgroundTask_1 = require("../dist/api/backgroundTask");
-const endpoint_1 = require("../dist/api/endpoint");
-const eventType_1 = require("../dist/api/eventType");
-const ingest_1 = require("../dist/api/ingest");
-const integration_1 = require("../dist/api/integration");
-const management_1 = require("../dist/api/management");
-const message_1 = require("../dist/api/message");
-const messageAttempt_1 = require("../dist/api/messageAttempt");
-const operationalWebhook_1 = require("../dist/api/operationalWebhook");
-const operationalWebhookEndpoint_1 = require("../dist/api/operationalWebhookEndpoint");
-const statistics_1 = require("../dist/api/statistics");
+const authentication_1 = require("../api/authentication");
+const application_1 = require("../api/application");
+const backgroundTask_1 = require("../api/backgroundTask");
+const endpoint_1 = require("../api/endpoint");
+const eventType_1 = require("../api/eventType");
+const ingest_1 = require("../api/ingest");
+const integration_1 = require("../api/integration");
+const management_1 = require("../api/management");
+const message_1 = require("../api/message");
+const messageAttempt_1 = require("../api/messageAttempt");
+const operationalWebhook_1 = require("../api/operationalWebhook");
+const operationalWebhookEndpoint_1 = require("../api/operationalWebhookEndpoint");
+const statistics_1 = require("../api/statistics");
 
-var util_1 = require("../dist/util");
+var util_1 = require("../util");
 Object.defineProperty(exports, "ApiException", { enumerable: true, get: function () { return util_1.ApiException; } });
 
-var HttpErrors_1 = require("../dist/HttpErrors");
+var HttpErrors_1 = require("../HttpErrors");
 Object.defineProperty(exports, "HTTPValidationError", { enumerable: true, get: function () { return HttpErrors_1.HTTPValidationError; } });
 Object.defineProperty(exports, "HttpErrorOut", { enumerable: true, get: function () { return HttpErrors_1.HttpErrorOut; } });
 Object.defineProperty(exports, "ValidationError", { enumerable: true, get: function () { return HttpErrors_1.ValidationError; } });
 
-__exportStar(require("../dist/webhook"), exports);
-__exportStar(require("../dist/models/index"), exports);
+__exportStar(require("../webhook"), exports);
+__exportStar(require("../models/index"), exports);
 
-var message_2 = require("../dist/api/message");
+var message_2 = require("../api/message");
 Object.defineProperty(exports, "messageInRaw", { enumerable: true, get: function () { return message_2.messageInRaw; } });
 
 const REGIONS = [
@@ -59,44 +59,19 @@ class Svix {
         const baseUrl = (_c = (_b = options.serverUrl) !== null && _b !== void 0 ? _b : regionalUrl) !== null && _c !== void 0 ? _c : "https://api.svix.com";
         this.requestCtx = { baseUrl, token, timeout: options.requestTimeout };
     }
-    get authentication() {
-        return new authentication_1.Authentication(this.requestCtx);
-    }
-    get application() {
-        return new application_1.Application(this.requestCtx);
-    }
-    get endpoint() {
-        return new endpoint_1.Endpoint(this.requestCtx);
-    }
-    get eventType() {
-        return new eventType_1.EventType(this.requestCtx);
-    }
-    get ingest() {
-        return new ingest_1.Ingest(this.requestCtx);
-    }
-    get integration() {
-        return new integration_1.Integration(this.requestCtx);
-    }
-    get management() {
-        return new management_1.Management(this.requestCtx);
-    }
-    get message() {
-        return new message_1.Message(this.requestCtx);
-    }
-    get messageAttempt() {
-        return new messageAttempt_1.MessageAttempt(this.requestCtx);
-    }
-    get backgroundTask() {
-        return new backgroundTask_1.BackgroundTask(this.requestCtx);
-    }
-    get statistics() {
-        return new statistics_1.Statistics(this.requestCtx);
-    }
-    get operationalWebhook() {
-        return new operationalWebhook_1.OperationalWebhook(this.requestCtx);
-    }
-    get operationalWebhookEndpoint() {
-        return new operationalWebhookEndpoint_1.OperationalWebhookEndpoint(this.requestCtx);
-    }
+
+    get authentication() { return new authentication_1.Authentication(this.requestCtx); }
+    get application() { return new application_1.Application(this.requestCtx); }
+    get endpoint() { return new endpoint_1.Endpoint(this.requestCtx); }
+    get eventType() { return new eventType_1.EventType(this.requestCtx); }
+    get ingest() { return new ingest_1.Ingest(this.requestCtx); }
+    get integration() { return new integration_1.Integration(this.requestCtx); }
+    get management() { return new management_1.Management(this.requestCtx); }
+    get message() { return new message_1.Message(this.requestCtx); }
+    get messageAttempt() { return new messageAttempt_1.MessageAttempt(this.requestCtx); }
+    get backgroundTask() { return new backgroundTask_1.BackgroundTask(this.requestCtx); }
+    get statistics() { return new statistics_1.Statistics(this.requestCtx); }
+    get operationalWebhook() { return new operationalWebhook_1.OperationalWebhook(this.requestCtx); }
+    get operationalWebhookEndpoint() { return new operationalWebhookEndpoint_1.OperationalWebhookEndpoint(this.requestCtx); }
 }
 exports.Svix = Svix;

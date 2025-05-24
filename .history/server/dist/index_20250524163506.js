@@ -3,7 +3,7 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
     if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-        desc = { enumerable: true, get: function() { return m[k]; } };
+      desc = { enumerable: true, get: function() { return m[k]; } };
     }
     Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
@@ -15,35 +15,29 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Svix = exports.messageInRaw = exports.ValidationError = exports.HttpErrorOut = exports.HTTPValidationError = exports.ApiException = void 0;
-
-const authentication_1 = require("../dist/api/authentication");
-const application_1 = require("../dist/api/application");
-const backgroundTask_1 = require("../dist/api/backgroundTask");
-const endpoint_1 = require("../dist/api/endpoint");
-const eventType_1 = require("../dist/api/eventType");
-const ingest_1 = require("../dist/api/ingest");
-const integration_1 = require("../dist/api/integration");
-const management_1 = require("../dist/api/management");
-const message_1 = require("../dist/api/message");
-const messageAttempt_1 = require("../dist/api/messageAttempt");
-const operationalWebhook_1 = require("../dist/api/operationalWebhook");
-const operationalWebhookEndpoint_1 = require("../dist/api/operationalWebhookEndpoint");
-const statistics_1 = require("../dist/api/statistics");
-
-var util_1 = require("../dist/util");
+const authentication_1 = require("./api/authentication");
+const application_1 = require("./api/application");
+const backgroundTask_1 = require("./api/backgroundTask");
+const endpoint_1 = require("./api/endpoint");
+const eventType_1 = require("./api/eventType");
+const ingest_1 = require("./api/ingest");
+const integration_1 = require("./api/integration");
+const management_1 = require("./api/management");
+const message_1 = require("./api/message");
+const messageAttempt_1 = require("./api/messageAttempt");
+const operationalWebhook_1 = require("./api/operationalWebhook");
+const operationalWebhookEndpoint_1 = require("./api/operationalWebhookEndpoint");
+const statistics_1 = require("./api/statistics");
+var util_1 = require("./util");
 Object.defineProperty(exports, "ApiException", { enumerable: true, get: function () { return util_1.ApiException; } });
-
-var HttpErrors_1 = require("../dist/HttpErrors");
+var HttpErrors_1 = require("./HttpErrors");
 Object.defineProperty(exports, "HTTPValidationError", { enumerable: true, get: function () { return HttpErrors_1.HTTPValidationError; } });
 Object.defineProperty(exports, "HttpErrorOut", { enumerable: true, get: function () { return HttpErrors_1.HttpErrorOut; } });
 Object.defineProperty(exports, "ValidationError", { enumerable: true, get: function () { return HttpErrors_1.ValidationError; } });
-
-__exportStar(require("../dist/webhook"), exports);
-__exportStar(require("../dist/models/index"), exports);
-
-var message_2 = require("../dist/api/message");
+__exportStar(require("./webhook"), exports);
+__exportStar(require("./models/index"), exports);
+var message_2 = require("./api/message");
 Object.defineProperty(exports, "messageInRaw", { enumerable: true, get: function () { return message_2.messageInRaw; } });
-
 const REGIONS = [
     { region: "us", url: "https://api.us.svix.com" },
     { region: "eu", url: "https://api.eu.svix.com" },
@@ -51,7 +45,6 @@ const REGIONS = [
     { region: "ca", url: "https://api.ca.svix.com" },
     { region: "au", url: "https://api.au.svix.com" },
 ];
-
 class Svix {
     constructor(token, options = {}) {
         var _a, _b, _c;
@@ -100,3 +93,4 @@ class Svix {
     }
 }
 exports.Svix = Svix;
+//# sourceMappingURL=index.js.map
