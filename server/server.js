@@ -21,7 +21,10 @@ await connectCloudinary()
 
 
 //Middlewares
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173', // your frontend domain
+  credentials: true
+}));
 app.use('/webhooks', express.raw({ type: 'application/json' }));
 app.use(express.json()); // keep this after raw
 app.use(clerkMiddleware());
