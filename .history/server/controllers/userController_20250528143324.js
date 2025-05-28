@@ -8,19 +8,19 @@ import { v2 as cloudinary } from "cloudinary"
 export const getUserData = async(req,res) => {
 
     const userId = req.auth.userId
-    console.log("Userid", userId)
+
     try {
         
         const user = await User.findById(userId)
 
         if(!user){
-            return res.json({success:false, message: 'User Not Found'})
+            return res.json({success:false, messge: 'User Not Found'})
         }
 
         res.json({success:true, user})
 
     } catch (error) {
-        res.json({success:false,message:error.message})
+        res.json({success:false,messge:error.messge})
     }
 
 }
@@ -38,13 +38,13 @@ export const applyForJob = async(req,res) =>{
         const isAlreadyApplied = await JobApplication.find({jobId,userId})
 
         if (isAlreadyApplied.length>0) {
-            return res.json({success:false, message: 'Already applied'})
+            return res.json({success:false, messge: 'Already applied'})
         }
 
         const jobData = await Job.findById(jobId)
 
         if (!jobData) {
-            return res.json({success:false, message: 'Job Not Found'})
+            return res.json({success:false, messge: 'Job Not Found'})
         }
 
         await JobApplication.create({
@@ -57,7 +57,7 @@ export const applyForJob = async(req,res) =>{
         res.json({success:true, message:'Applied Successfully'})
 
     } catch (error) {
-        res.json({success:false,message:error.message})
+        res.json({success:false,messge:error.messge})
     }
 
 }
@@ -81,7 +81,7 @@ export const getUserJobApplications = async(req,res) =>{
         return res.json({success:true, applications})
 
     } catch (error) {
-        res.json({success:false,message:error.message})
+        res.json({success:false,messge:error.messge})
     }
 
 }
@@ -106,6 +106,6 @@ export const updateUserResume = async(req,res) =>{
         return res.json({ success:true, message:'Resume Updated'})
 
     } catch (error) {
-        res.json({success:false,message:error.message})
+        res.json({success:false,messge:error.messge})
     }
 }

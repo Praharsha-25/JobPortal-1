@@ -34,10 +34,16 @@ app.get('/', (req, res) => res.send("API Working"))
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
+app.get('/test-auth', (req, res) => {
+  const auth = req.auth?.();
+  console.log("Auth in test-auth route:", auth);
+  res.json({ userId: auth?.userId });
+});
+
 app.post('/webhooks', clerkWebhooks)
 app.use('/api/company',companyRoutes)
 app.use('/api/jobs',jobRoutes)
-app.use('/api/users', userRoutes)
+app.use('/api/users',userRoutes)
 
 //Port
 const PORT = process.env.PORT || 5000

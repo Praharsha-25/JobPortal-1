@@ -28,6 +28,10 @@ app.use(cors({
 app.use('/webhooks', express.raw({ type: 'application/json' }));
 app.use(express.json()); // keep this after raw
 app.use(clerkMiddleware());
+app.use((req, res, next) => {
+  console.log("DEBUG: auth object", req.auth);
+  next();
+});
 
 //Routes
 app.get('/', (req, res) => res.send("API Working"))

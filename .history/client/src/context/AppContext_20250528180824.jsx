@@ -60,8 +60,12 @@ export const AppContextProvider = (props) => {
     const fetchUserData = async () => {
         try {
             const token = await getToken();
-            const {data} = await axios.get(backendUrl + '/api/users/user', {headers:{Authorization:`Bearer ${token}`}})
+            const {data} = await axios.get(backendUrl + '/api/users/user', 
+                {headers:{Authorization:`Bearer ${token}`}})
             console.log("token", token)
+            await axios.get(`${backendUrl}/test-auth`, {
+            headers: { Authorization: `Bearer ${token}` }
+            });
             if(data.success){
                 setUserData(data.user)
             }else{
