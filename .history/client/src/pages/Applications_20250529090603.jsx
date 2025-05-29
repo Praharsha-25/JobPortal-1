@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import {useState} from'react'
 import { assets, jobsApplied } from '../assets/assets'
 import Navbar from '../components/Navbar'
@@ -16,7 +16,7 @@ const Applications = () => {
 
   const [isEdit, setIsEdit] = useState(false)
   const [resume, setResume] = useState(null)
-  const {backendUrl, userData, userApplications, fetchUserData, fetchUserApplications} = useContext(AppContext)
+  const {backendUrl, userData, userApplications, fetchUserData} = useContext(AppContext)
 
   const updateResume = async() => {
 
@@ -49,12 +49,6 @@ const Applications = () => {
 
   }
 
-  useEffect(() => {
-    if(user){
-      fetchUserApplications()
-    }
-  },[user])
-
   return (
     <>
       <Navbar />
@@ -73,7 +67,7 @@ const Applications = () => {
 
             </> 
             : <div className='flex gap-2 '>
-              <a target='_blank' href={userData.resume} className='bg-blue-100 text-blue-600 px-4 py-2 rounded-lg '>
+              <a href="" className='bg-blue-100 text-blue-600 px-4 py-2 rounded-lg '>
                 Resume
               </a>
               <button onClick={() => setIsEdit(true)} className='text-gray-500 border border-gray-300 rounded-lg px-4 py-2 cursor-pointer'>
@@ -95,7 +89,7 @@ const Applications = () => {
           </thead>
           <tbody>
             {userApplications.map((job, index) => true ? (
-              <tr key={index}>
+              <tr>
                 <td className='py-3 px-4 flex items-center gap-2 border-b'>
                   <img className='w-8 h-8' src={job.companyId.image} alt="" />
                   {job.companyId.name}

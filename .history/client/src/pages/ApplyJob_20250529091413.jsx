@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import { assets } from "../assets/assets";
+import { assets, jobsData } from "../assets/assets";
 import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import kconvert from "k-convert";
@@ -53,7 +53,6 @@ const ApplyJob = () => {
 
       if(data.success){
         toast.success(data.message)
-        fetchUserApplications()
       }
       else{
         toast.error(data.message)
@@ -65,7 +64,7 @@ const ApplyJob = () => {
   }
 
   const checkAlreadyApplied = () => {
-    const hasApplied = userApplications.some(item => item.jobId._id === JobData._id)
+    const hasApplied = userApplications.some(item => item.jobId._id === jobsData._id)
     setIsAlreadyApplied(hasApplied)
 
   }
@@ -75,10 +74,10 @@ const ApplyJob = () => {
   }, [id]);
 
   useEffect(() => {
-    if(userApplications.length > 0 && JobData){
+    if(userApplications.length > 0 && jobsData){
       checkAlreadyApplied()
     }
-  },[JobData,userApplications,id])
+  },[jobsData,userApplications,id])
 
   return JobData ? (
     <>
@@ -146,12 +145,7 @@ const ApplyJob = () => {
                     job._id !== JobData._id &&
                     job.companyId._id === JobData.companyId._id
                 )
-                .filter((job) => {
-                  //Set of applied jobs
-                  const appliedJobsIds = new Set(userApplications.map(app => app.jobId && app.jobId._id))
-                  //Return true if the user is not applied for the job
-                  return !appliedJobsIds.has(job._id)
-                })
+                .filter((job) => true)
                 .slice(0, 4)
                 .map((job, index) => (
                   <JobCard key={index} job={job} />

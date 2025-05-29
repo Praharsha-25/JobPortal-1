@@ -33,8 +33,7 @@ export const applyForJob = async(req,res) =>{
 
     const { jobId } = req.body
 
-    const { userId } = getAuth(req)
-
+    const userId = req.auth.userId
 
     try {
         
@@ -70,8 +69,7 @@ export const getUserJobApplications = async(req,res) =>{
 
     try {
        
-        const { userId } = getAuth(req)
-
+        const userId = req.auth.userId
 
         const applications = await JobApplication.find({userId})
         .populate('companyId','name email image')

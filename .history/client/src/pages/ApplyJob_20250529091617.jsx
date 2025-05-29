@@ -53,7 +53,6 @@ const ApplyJob = () => {
 
       if(data.success){
         toast.success(data.message)
-        fetchUserApplications()
       }
       else{
         toast.error(data.message)
@@ -146,12 +145,7 @@ const ApplyJob = () => {
                     job._id !== JobData._id &&
                     job.companyId._id === JobData.companyId._id
                 )
-                .filter((job) => {
-                  //Set of applied jobs
-                  const appliedJobsIds = new Set(userApplications.map(app => app.jobId && app.jobId._id))
-                  //Return true if the user is not applied for the job
-                  return !appliedJobsIds.has(job._id)
-                })
+                .filter((job) => true)
                 .slice(0, 4)
                 .map((job, index) => (
                   <JobCard key={index} job={job} />
